@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+</head>
+<body>
+    <h1>Калькулятор математичних виразів</h1>
+
+    <form method="post" th:action="@{/}">
+        <label for="expression">Математичний вираз:</label>
+
+        <input
+            id="expression"
+            name="expression"
+            type="text"
+            th:value="${expression}"
+            placeholder="2+2*2"
+            required>
+
+        <button type="submit">Обчислити</button>
+    </form>
+
+    <p th:if="${result != null}">
+        Результат: <strong th:text="${result}"></strong>
+    </p>
+
+    <p th:if="${error != null}" role="alert">
+        Помилка: <span th:text="${error}"></span>
+    </p>
+</body>
+</html>
